@@ -9,14 +9,15 @@ BirchVM is a simple, custom virtual machine (VM) project built in C. This projec
 - [Running the Tests](#running-the-tests)
 - [Cleaning the Project](#cleaning-the-project)
 - [Scripted Workflow](#scripted-workflow)
-- [Contributing](#contributing)
-- [License](#license)
-
 ---
 
 ## Overview
 
 The BirchVM project is designed to emulate basic VM functionality with core components modularized into separate source files. It is organized for flexibility and ease of testing, with clear directory structures for source files, headers, build files, and test cases. A `Makefile` is included for build automation, along with a `run.sh` script that provides commands for various build and test operations.
+
+Registers : AX / BX / CX / DX / SP / IP and its derivatives ( on 8 bits and 32 bits for the first 4).
+
+Operations : MOV / SUB / MUL / DIV / NOP / HLT.
 
 ## Project Structure
 
@@ -44,67 +45,45 @@ The project follows a professional layout to keep components organized:
     build/: Stores compiled object files to keep the workspace clean.
     bin/: Contains the final executable output, birchvm, and any additional binaries.
     test/: Holds test code and files specific to the test suite.
-
-Building and Running
+```
+## Building and Running
 
 To build the project, navigate to the project root directory and use make or the provided run.sh script:
 
-bash
+### Using Makefile directly
+``` make ```
 
-# Using Makefile directly
-make
+### Using the run.sh script
+```./run.sh build```
 
-# Using the run.sh script
-./run.sh build
+### After building, you can execute birchvm with:
 
-After building, you can execute birchvm with:
-
-bash
-
-./run.sh run
-
-You can also provide arguments:
-
-bash
-
-./run.sh run arg1 arg2
+```./run.sh run```
 
 The compiled executable will be located in the bin/ directory.
 Running the Tests
 
-This project includes a test suite located in the test/ directory. To build and run tests, use:
+## Running the tests
 
-bash
-
-./run.sh test
+``` ./run.sh test ```
 
 The run.sh script will compile the tests and execute the test runner, providing output on test results.
-Cleaning the Project
+
+## Cleaning the Project
 
 To remove all generated files, such as binaries and compiled objects, run:
 
-bash
-
-./run.sh clean
+``` ./run.sh clean ```
 
 This will delete everything in the bin/ and build/ directories.
-Scripted Workflow
+
+## Scripted Workflow
 
 The run.sh script offers a convenient interface for managing the project, supporting the following commands:
-
-    build — Compile the project and create executables.
-    run — Run the main executable (birchvm), with optional arguments.
-    test — Build and execute tests.
-    clean — Remove all compiled files.
-    help — Show usage instructions.
-
-Example usage:
-
-bash
-
-./run.sh build      # Build the project
-./run.sh run        # Run the main executable
-./run.sh run arg1   # Run with arguments
-./run.sh test       # Run tests
-./run.sh clean      # Clean up
-
+```
+build — Compile the project and create executables.
+run — Run the main executable (birchvm), with optional arguments.
+test — Build and execute tests.
+clean — Remove all compiled files.
+help — Show usage instructions.
+```
